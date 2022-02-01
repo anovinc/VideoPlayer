@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "345044724083",
+    "project_id": "videoplayer-71f16",
+    "storage_bucket": "videoplayer-71f16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345044724083:android:23ecee0899fbd9f8bf3d06",
+        "android_client_info": {
+          "package_name": "com.example.videoplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345044724083-mj7i8655p2dqt0kn53sv9kvaslntmufe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5uDOf7UyNUBaRoNfb0qLIqf2NApfNksw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345044724083-mj7i8655p2dqt0kn53sv9kvaslntmufe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
