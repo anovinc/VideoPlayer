@@ -22,7 +22,6 @@ abstract class BaseFragment<BindingType : ViewBinding> : Fragment() {
     ): View? {
         _binding = bindingInflater(inflater,container,false)
         return binding?.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
