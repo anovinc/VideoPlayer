@@ -4,7 +4,7 @@ import android.content.Context
 
 class PrefsManager {
     private val sharedPreferences =
-        App.application.getSharedPreferences("BelotGameSettings", Context.MODE_PRIVATE)
+        VideoPlayerApp.application.getSharedPreferences("BelotGameSettings", Context.MODE_PRIVATE)
 
     private val userEditor = sharedPreferences.edit()
 
