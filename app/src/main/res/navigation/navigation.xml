@@ -12,7 +12,9 @@
             app:destination="@id/userRegistrationFragment" />
         <action
             android:id="@+id/action_userLoginFragment_to_videoHostFragment"
-            app:destination="@id/videoHostFragment" />
+            app:destination="@id/videoHostFragment"
+            app:popUpTo="@id/userLoginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/userRegistrationFragment"

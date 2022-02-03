@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/drawable/splash_background.xml" value="0.25555555555555554" />
         <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/layout/fragment_local_videos.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/layout/fragment_user_login.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/layout/fragment_user_registration.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/layout/fragment_video_host.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/layout/fragment_youtube_videos.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/layout/fragment_youtube_videso.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/a2nov/AndroidStudioProjects/VideoPlayer/app/src/main/res/menu/menu.xml" value="0.8928571428571429" />
       </map>
     </option>

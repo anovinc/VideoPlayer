@@ -6,4 +6,6 @@
     <string name="login">Prijavi se</string>
     <string name="register">registriraj</string>
     <string name="sing_out">Odjava</string>
+    <string name="local">Local</string>
+    <string name="youtube">youtube</string>
 </resources>
