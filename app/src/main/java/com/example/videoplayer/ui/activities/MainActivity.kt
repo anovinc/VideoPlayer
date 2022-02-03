@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
     private fun checkPermissions() {
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION_CODE)
-        else
-            Toast.makeText(this, "Permissions already granted!", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRequestPermissionsResult(
