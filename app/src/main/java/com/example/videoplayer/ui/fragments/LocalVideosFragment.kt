@@ -49,7 +49,8 @@ class LocalVideosFragment : BaseFragment<FragmentLocalVideosBinding>(), Recycler
         })
     }
 
-    override fun onThumbnailClick(path: String?) {
-        TODO("Not yet implemented")
+    override fun onThumbnailClick(path: String) {
+        val videoViewDialog = VideoViewDialog()
+        videoViewDialog.showVideoView(requireActivity(), path)
     }
 }

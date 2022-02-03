@@ -56,6 +56,6 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.LocalVideoV
     }
 
     interface OnVideoThumbnailClick {
-        fun onThumbnailClick(path: String?)
+        fun onThumbnailClick(path: String)
     }
 }
