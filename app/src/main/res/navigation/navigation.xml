@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/videoHostFragment"
-        android:name="com.example.videoplayer.ui.VideoHostFragment"
+        android:name="com.example.videoplayer.ui.fragments.VideoHostFragment"
         android:label="VideoHostFragment" >
         <action
             android:id="@+id/action_videoHostFragment_to_userLoginFragment"

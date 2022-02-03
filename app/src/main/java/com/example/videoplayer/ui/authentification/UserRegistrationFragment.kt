@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.videoplayer.R
 import com.example.videoplayer.databinding.FragmentUserRegistrationBinding
 import com.example.videoplayer.extensions.onClick
-import com.example.videoplayer.ui.BaseFragment
+import com.example.videoplayer.ui.base.BaseFragment
 import com.example.videoplayer.ui.authentification.viewmodels.UserRegistrationViewModel
 import org.koin.android.ext.android.inject
 

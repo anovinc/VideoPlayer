@@ -1,6 +1,6 @@
 package com.example.videoplayer.repository
 
-import com.example.videoplayer.PrefsManager
+import com.example.videoplayer.utils.PrefsManager
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

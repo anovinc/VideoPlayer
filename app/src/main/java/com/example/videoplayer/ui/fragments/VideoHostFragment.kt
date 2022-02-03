@@ -1,18 +1,18 @@
-package com.example.videoplayer.ui
+package com.example.videoplayer.ui.fragments
 
 import android.view.*
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.videoplayer.R
-import com.example.videoplayer.ScreenSlidePageAdapter
-import com.example.videoplayer.VideHostViewModel
+import com.example.videoplayer.ui.adapters.ScreenSlidePageAdapter
+import com.example.videoplayer.ui.authentification.viewmodels.VideHostViewModel
 import com.example.videoplayer.databinding.FragmentVideoHostBinding
+import com.example.videoplayer.ui.base.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
-import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
 
 class VideoHostFragment : BaseFragment<FragmentVideoHostBinding>() {
-    private var names = listOf<String>("local", "youtube")
+    private var names = listOf("local", "youtube")
     private lateinit var viewPager: ViewPager2
     private val viewModel: VideHostViewModel by inject()
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentVideoHostBinding

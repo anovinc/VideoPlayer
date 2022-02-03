@@ -1,6 +1,7 @@
-package com.example.videoplayer
+package com.example.videoplayer.utils
 
 import android.content.Context
+import com.example.videoplayer.VideoPlayerApp
 
 class PrefsManager {
     private val sharedPreferences =

@@ -1,4 +1,4 @@
-package com.example.videoplayer.ui
+package com.example.videoplayer.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

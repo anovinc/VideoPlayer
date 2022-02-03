@@ -1,4 +1,4 @@
-package com.example.videoplayer
+package com.example.videoplayer.ui.authentification.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.example.videoplayer.repository.AuthentificationRepository

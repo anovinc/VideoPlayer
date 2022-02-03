@@ -8,4 +8,5 @@
     <string name="sing_out">Odjava</string>
     <string name="local">Local</string>
     <string name="youtube">youtube</string>
+    <string name="in_order_to_see_your_videos_please_change_your_permissions">In order to see your videos please change your permissions</string>
 </resources>
