@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import com.example.videoplayer.R
+import com.example.videoplayer.utils.PrefsManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         val navGraph = navController.navInflater.inflate(R.navigation.navigation)
-        if(isUserLoggedIn) {
+        if(isUserLoggedIn && PrefsManager().getUser() != "admin") {
             navGraph.setStartDestination(R.id.videoHostFragment)
         }
         else {

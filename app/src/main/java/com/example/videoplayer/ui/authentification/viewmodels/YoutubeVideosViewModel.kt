@@ -23,4 +23,9 @@ class YoutubeVideosViewModel(private val firestoreRepository: FirestoreRepositor
             }
         }
     }
+    fun saveVideo(name : String, onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            firestoreRepository.saveVideo(collectionName, name, onResult)
+        }
+    }
 }

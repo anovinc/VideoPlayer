@@ -5,14 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.videoplayer.BuildConfig
 import com.example.videoplayer.databinding.FragmentYoutubeVideosBinding
+import com.example.videoplayer.extensions.onClick
 import com.example.videoplayer.ui.adapters.RecyclerViewAdapter
 import com.example.videoplayer.ui.authentification.viewmodels.YoutubeVideosViewModel
 import com.example.videoplayer.ui.base.BaseFragment
 import com.example.videoplayer.utils.YoutubeIdHelper
 import org.koin.android.ext.android.inject
+import android.R
+import android.widget.LinearLayout
+
+import android.widget.TextView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+
+import com.google.android.material.bottomsheet.BottomSheetDialog
+
+
+
 
 class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), RecyclerViewAdapter.OnVideoThumbnailClick {
-
     private val viewModel : YoutubeVideosViewModel by inject()
     private val recyclerViewAdapter = RecyclerViewAdapter(this)
     private val NUMBER_OF_COLS = 3
@@ -46,5 +56,15 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
     override fun onThumbnailClick(path: String) {
         val videoViewDialog = VideoViewDialog()
         videoViewDialog.showYoutubeVideo(requireActivity(), viewLifecycleOwner, id = path)
+    }
+
+    private fun setupCategoryButton() {
+        binding.btnCategory.onClick {
+            showBottomSheetDialog()
+        }
+    }
+
+    private fun showBottomSheetDialog() {
+
     }
 }
