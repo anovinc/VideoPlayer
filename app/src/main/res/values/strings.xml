@@ -9,4 +9,8 @@
     <string name="local">Local</string>
     <string name="youtube">youtube</string>
     <string name="in_order_to_see_your_videos_please_change_your_permissions">In order to see your videos please change your permissions</string>
+    <string name="admin">ADMIN</string>
+    <string name="prijavite_se_kao_admin">Prijavite se kao admin</string>
+    <string name="url_za_video">URL za video</string>
+    <string name="spremi_video">SPREMI VIDEO</string>
 </resources>

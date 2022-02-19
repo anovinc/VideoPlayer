@@ -15,6 +15,9 @@
             app:destination="@id/videoHostFragment"
             app:popUpTo="@id/userLoginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
     <fragment
         android:id="@+id/userRegistrationFragment"
@@ -30,6 +33,29 @@
         android:label="VideoHostFragment" >
         <action
             android:id="@+id/action_videoHostFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.videoplayer.ui.fragments.AdminFragment"
+        android:label="AdminFragment">
+
+        <action
+            android:id="@+id/action_adminFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_adminVideosFragment"
+            app:destination="@id/adminVideosFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminVideosFragment"
+        android:name="com.example.videoplayer.ui.fragments.AdminVideosFragment"
+        android:label="adminVideosFragment">
+
+        <action
+            android:id="@+id/action_adminVideosFragment_to_userLoginFragment"
             app:destination="@id/userLoginFragment" />
     </fragment>
 </navigation>

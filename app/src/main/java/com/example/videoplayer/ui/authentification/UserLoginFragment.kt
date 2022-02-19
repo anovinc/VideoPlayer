@@ -28,14 +28,15 @@ class UserLoginFragment : BaseFragment<FragmentUserLoginBinding>() {
             btnLogin.onClick {
                 loginUser(getEmail(), getPassword())
             }
+            btnAdmin.onClick {
+                goToAdminFragment()
+            }
         }
     }
 
     private fun goToRegistration() {
         findNavController().navigate(R.id.action_userLoginFragment_to_userRegistrationFragment)
     }
-
-
 
     private fun isMailOrPasswordEmpty(email: String, password: String) =
         viewModel.isMailOrPasswordEmpty(email, password)
@@ -50,7 +51,7 @@ class UserLoginFragment : BaseFragment<FragmentUserLoginBinding>() {
                     goForward()
                 } else {
                     Toast.makeText(
-                        context,
+                        requireContext(),
                         "Prijava nije uspijela, pokušajte ponovo",
                         Toast.LENGTH_LONG
                     ).show()
@@ -58,11 +59,15 @@ class UserLoginFragment : BaseFragment<FragmentUserLoginBinding>() {
             }
         }
         else {
-            Toast.makeText(context,"Ostavili ste prazna polja, sva polja moraju biti ispunjena",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"Ostavili ste prazna polja, sva polja moraju biti ispunjena",Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun goForward() {
         findNavController().navigate(R.id.action_userLoginFragment_to_videoHostFragment)
+    }
+
+    private fun goToAdminFragment() {
+        findNavController().navigate(R.id.action_userLoginFragment_to_adminFragment)
     }
 }
