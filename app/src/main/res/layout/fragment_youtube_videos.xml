@@ -1,24 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintBottom_toTopOf="@id/btn_category"
         android:id="@+id/rv_videos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RadioGroup
+        android:id="@+id/rg_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/btn_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Glazba"
+            android:textColor="@color/teal_700" />
+
+        <RadioButton
+            android:id="@+id/sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sport"
+            android:textColor="@color/teal_700" />
+
+        <RadioButton
+            android:id="@+id/entertaiment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zabava"
+            android:textColor="@color/teal_700" />
+
+        <RadioButton
+            android:id="@+id/all_videos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sve"
+            android:textColor="@color/teal_700" />
+    </RadioGroup>
+
     <Button
-        android:text="@string/category"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/btn_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:text="Sortiraj"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

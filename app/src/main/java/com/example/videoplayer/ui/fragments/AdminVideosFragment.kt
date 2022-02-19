@@ -3,6 +3,7 @@ package com.example.videoplayer.ui.fragments
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.videoplayer.R
 import com.example.videoplayer.databinding.FragmentAdminVideosBinding
 import com.example.videoplayer.ui.authentification.viewmodels.YoutubeVideosViewModel
 import com.example.videoplayer.ui.base.BaseFragment
@@ -23,7 +24,7 @@ class AdminVideosFragment : BaseFragment<FragmentAdminVideosBinding>() {
         with(binding) {
             btnSaveVideo.setOnClickListener {
                 if(binding.urlInput.text.toString().isNullOrEmpty()) Toast.makeText(context, "Prazna polja nisu dozvoljena.", Toast.LENGTH_SHORT).show()
-                 else viewModel.saveVideo(binding.urlInput.text.toString()) {
+                 else viewModel.saveVideo(binding.urlInput.text.toString(), getCategory()) {
                     if (it) {
                         Toast.makeText(context,"Dodan novi YT video!!", Toast.LENGTH_SHORT).show()
                     }
@@ -34,4 +35,15 @@ class AdminVideosFragment : BaseFragment<FragmentAdminVideosBinding>() {
             }
         }
     }
+
+    private fun getCategory(): String {
+        return when (binding.rgOption.checkedRadioButtonId) {
+            R.id.sport -> "sport"
+            R.id.entertaiment -> "zabava"
+            R.id.music -> "glazba"
+            else  -> ""
+        }
+    }
+
+
 }

@@ -3,22 +3,13 @@ package com.example.videoplayer.ui.fragments
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.videoplayer.BuildConfig
 import com.example.videoplayer.databinding.FragmentYoutubeVideosBinding
 import com.example.videoplayer.extensions.onClick
 import com.example.videoplayer.ui.adapters.RecyclerViewAdapter
 import com.example.videoplayer.ui.authentification.viewmodels.YoutubeVideosViewModel
 import com.example.videoplayer.ui.base.BaseFragment
-import com.example.videoplayer.utils.YoutubeIdHelper
 import org.koin.android.ext.android.inject
-import android.R
-import android.widget.LinearLayout
-
-import android.widget.TextView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-
-import com.google.android.material.bottomsheet.BottomSheetDialog
-
+import com.example.videoplayer.R
 
 
 
@@ -34,6 +25,7 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
         init()
         observeData()
         fetchData()
+        sortVideos()
     }
 
     private fun init() {
@@ -58,13 +50,21 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
         videoViewDialog.showYoutubeVideo(requireActivity(), viewLifecycleOwner, id = path)
     }
 
-    private fun setupCategoryButton() {
+    private fun sortVideos() {
         binding.btnCategory.onClick {
-            showBottomSheetDialog()
+            when(binding.rgSort.checkedRadioButtonId) {
+                R.id.all_videos -> fetchData()
+                R.id.music -> findVideos("music")
+                R.id.sport -> findVideos("sport")
+                R.id.entertaiment -> findVideos("zabava")
+            }
         }
     }
 
-    private fun showBottomSheetDialog() {
+    private fun findVideos(id: String) {
+        viewModel.getVideos(id)
 
     }
+
+
 }
