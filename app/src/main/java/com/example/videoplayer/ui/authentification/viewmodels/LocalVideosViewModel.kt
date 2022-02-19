@@ -1,10 +1,8 @@
 package com.example.videoplayer.ui.authentification.viewmodels
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.provider.MediaStore
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.videoplayer.models.LocalVideo

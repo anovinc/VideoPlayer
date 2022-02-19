@@ -1,5 +1,6 @@
 package com.example.videoplayer.utils
 
+import com.example.videoplayer.BuildConfig
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -14,6 +15,10 @@ class YoutubeIdHelper {
             } else {
                 "error"
             }
+        }
+
+        fun getImageUrlFromId(videoId: String) : String {
+            return BuildConfig.BASE_URL + videoId + BuildConfig.URL_END
         }
     }
 }

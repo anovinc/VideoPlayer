@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.videoplayer.R
 import com.example.videoplayer.models.LocalVideo
+import com.example.videoplayer.models.YoutubeVideo
 import java.util.ArrayList
 
 class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.LocalVideoViewHolder> {
@@ -17,7 +19,9 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.LocalVideoV
     }
 
     private val localVideos: ArrayList<LocalVideo> = ArrayList<LocalVideo>()
+    private val youtubeVideos: ArrayList<YoutubeVideo> = ArrayList<YoutubeVideo>()
     private var onVideoThumbnailClick: OnVideoThumbnailClick? = null
+    private var isLocal = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocalVideoViewHolder {
         return LocalVideoViewHolder(
@@ -26,31 +30,63 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.LocalVideoV
     }
 
     override fun onBindViewHolder(holder: LocalVideoViewHolder, position: Int) {
-        holder.bindVideos(localVideos[position])
+        if(isLocal)
+            holder.bindLocalVideos(localVideos[position])
+        else
+            holder.bindYoutubeVideos(youtubeVideos[position])
     }
 
     override fun getItemCount(): Int {
-        return localVideos.size
+        return if(isLocal)
+            localVideos.size
+        else
+            youtubeVideos.size
     }
 
-    fun addVideos(localVideos: ArrayList<LocalVideo>?) {
+    fun addLocalVideos(localVideos: ArrayList<LocalVideo>?) {
         if (this.localVideos.isNotEmpty()) this.localVideos.clear()
         this.localVideos.addAll(localVideos!!)
         notifyDataSetChanged()
     }
 
+    fun addYoutubeVideos(youtubeVideos: ArrayList<YoutubeVideo>) {
+        if(this.youtubeVideos.isNotEmpty()) this.youtubeVideos.clear()
+        this.youtubeVideos.addAll(youtubeVideos)
+        notifyDataSetChanged()
+    }
+
+    fun setIsLocal(isLocal: Boolean) {
+        this.isLocal = isLocal
+    }
+
     inner class LocalVideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private var thumbnail: ImageView = itemView.findViewById(R.id.iv_video_thumbnail)
-        fun bindVideos(video: LocalVideo) {
+
+        fun bindLocalVideos(video: LocalVideo) {
             thumbnail.setImageBitmap(video.imageThumbnail)
         }
 
+        fun bindYoutubeVideos(video: YoutubeVideo) {
+            Glide.with(thumbnail.context)
+                .load(video.videoThumbnail)
+                .into(thumbnail)
+        }
+
         init {
-            itemView.setOnClickListener { v: View? ->
-                onVideoThumbnailClick?.onThumbnailClick(
-                    localVideos[adapterPosition].videoPath
-                )
-                Log.d("videopath", localVideos[adapterPosition].videoPath)
+            itemView.setOnClickListener {
+                if(isLocal) {
+                    onVideoThumbnailClick?.onThumbnailClick(
+                        localVideos[absoluteAdapterPosition].videoPath
+                    )
+                    Log.d("videopath", localVideos[absoluteAdapterPosition].videoPath)
+                }
+                else {
+                    onVideoThumbnailClick?.onThumbnailClick(
+                        youtubeVideos[absoluteAdapterPosition].videoId
+                    )
+                    Log.d("videopath", youtubeVideos[absoluteAdapterPosition].videoId)
+                }
             }
         }
     }

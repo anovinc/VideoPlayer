@@ -35,6 +35,7 @@ class LocalVideosFragment : BaseFragment<FragmentLocalVideosBinding>(), Recycler
             binding.tvPermissions.visibility = View.VISIBLE
     }
     private fun init() {
+        recyclerViewAdapter.setIsLocal(true)
         binding.rvVideos.apply {
             layoutManager = GridLayoutManager(requireContext(), NUMBER_OF_COLS)
             adapter = recyclerViewAdapter
@@ -45,7 +46,7 @@ class LocalVideosFragment : BaseFragment<FragmentLocalVideosBinding>(), Recycler
     }
     private fun observeData() {
         viewModel.getLocalVideos().observe(viewLifecycleOwner, {
-            recyclerViewAdapter.addVideos(it)
+            recyclerViewAdapter.addLocalVideos(it)
         })
     }
 

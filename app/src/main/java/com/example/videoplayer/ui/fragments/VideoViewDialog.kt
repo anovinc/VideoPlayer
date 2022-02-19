@@ -30,7 +30,7 @@ class VideoViewDialog {
         videoView.start()
     }
 
-    fun showYoutubeVideo(activity: Activity, lifecycleOwner: LifecycleOwner, path: String) {
+    fun showYoutubeVideo(activity: Activity, lifecycleOwner: LifecycleOwner, id: String) {
         val dialog = Dialog(activity)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
@@ -44,7 +44,7 @@ class VideoViewDialog {
         lifecycleOwner.lifecycle.addObserver(youTubePlayerView)
         youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(path, 0f)
+                youTubePlayer.loadVideo(id, 0f)
             }
         })
         dialog.show()
