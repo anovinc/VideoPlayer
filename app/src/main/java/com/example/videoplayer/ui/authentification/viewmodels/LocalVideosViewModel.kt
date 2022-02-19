@@ -20,7 +20,6 @@ class LocalVideosViewModel : ViewModel() {
         val columns = arrayOf(MediaStore.Video.VideoColumns.DATA, MediaStore.Video.VideoColumns.DISPLAY_NAME)
         val cursor = context.contentResolver.query(uri, null, null, null, null)
         count = cursor!!.count
-        Log.d("kruzorooz", cursor.count.toString())
 
         for (i in count - 1 downTo 0) {
             cursor.moveToPosition(i)

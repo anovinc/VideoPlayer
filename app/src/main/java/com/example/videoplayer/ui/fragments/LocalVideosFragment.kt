@@ -51,6 +51,6 @@ class LocalVideosFragment : BaseFragment<FragmentLocalVideosBinding>(), Recycler
 
     override fun onThumbnailClick(path: String) {
         val videoViewDialog = VideoViewDialog()
-        videoViewDialog.showVideoView(requireActivity(), path)
+        videoViewDialog.showLocalVideo(requireActivity(), path)
     }
 }
