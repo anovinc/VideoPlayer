@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.videoplayer.R
 import com.example.videoplayer.models.LocalVideo
 import com.example.videoplayer.models.YoutubeVideo
+import java.io.File
 import java.util.ArrayList
 
 class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.LocalVideoViewHolder> {
@@ -65,7 +66,9 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.LocalVideoV
         private var thumbnail: ImageView = itemView.findViewById(R.id.iv_video_thumbnail)
 
         fun bindLocalVideos(video: LocalVideo) {
-            Glide.with(thumbnail.context).load(video.imageThumbnail).into(thumbnail)
+            Glide.with(thumbnail.context)
+                .load(video.videoPath)
+                .into(thumbnail)
         }
 
         fun bindYoutubeVideos(video: YoutubeVideo) {
