@@ -9,7 +9,9 @@
         android:label="UserLoginFragment" >
         <action
             android:id="@+id/action_userLoginFragment_to_userRegistrationFragment"
-            app:destination="@id/userRegistrationFragment" />
+            app:destination="@id/userRegistrationFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left" />
         <action
             android:id="@+id/action_userLoginFragment_to_videoHostFragment"
             app:destination="@id/videoHostFragment"
@@ -25,7 +27,9 @@
         android:label="UserRegistrationFragment" >
         <action
             android:id="@+id/action_userRegistrationFragment_to_userLoginFragment"
-            app:destination="@id/userLoginFragment" />
+            app:destination="@id/userLoginFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/videoHostFragment"

@@ -42,7 +42,7 @@ class LocalVideosFragment : BaseFragment<FragmentLocalVideosBinding>(), Recycler
         }
     }
     private fun fetchLocalVideos() {
-        viewModel.getAllVideos(requireContext())
+        viewModel.getVideos(requireContext())
     }
     private fun observeData() {
         viewModel.getLocalVideos().observe(viewLifecycleOwner, {

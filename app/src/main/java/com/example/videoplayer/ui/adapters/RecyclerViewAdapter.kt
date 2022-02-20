@@ -1,5 +1,6 @@
 package com.example.videoplayer.ui.adapters
 
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -64,7 +65,7 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.LocalVideoV
         private var thumbnail: ImageView = itemView.findViewById(R.id.iv_video_thumbnail)
 
         fun bindLocalVideos(video: LocalVideo) {
-            thumbnail.setImageBitmap(video.imageThumbnail)
+            Glide.with(thumbnail.context).load(video.imageThumbnail).into(thumbnail)
         }
 
         fun bindYoutubeVideos(video: YoutubeVideo) {

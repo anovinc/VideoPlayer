@@ -7,8 +7,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.videoplayer.R
 import com.example.videoplayer.databinding.FragmentUserLoginBinding
 import com.example.videoplayer.extensions.onClick
+import com.example.videoplayer.extensions.visible
 import com.example.videoplayer.ui.base.BaseFragment
 import com.example.videoplayer.ui.authentification.viewmodels.UserLoginViewModel
+import com.google.firebase.firestore.core.View
 import org.koin.android.ext.android.inject
 
 class UserLoginFragment : BaseFragment<FragmentUserLoginBinding>() {
@@ -48,6 +50,7 @@ class UserLoginFragment : BaseFragment<FragmentUserLoginBinding>() {
         if (isMailOrPasswordEmpty(email, password)) {
             viewModel.loginUser(email, password) {
                 if (it) {
+                    binding.progressBar.visible()
                     goForward()
                 } else {
                     Toast.makeText(
