@@ -1,6 +1,7 @@
 package com.example.videoplayer.ui.fragments
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.videoplayer.databinding.FragmentYoutubeVideosBinding
@@ -37,11 +38,13 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
 
     private fun observeData() {
         viewModel.youtubeVideos.observe(viewLifecycleOwner, {
+            binding.progressBar.visibility = View.INVISIBLE
             recyclerViewAdapter.addYoutubeVideos(it)
         })
     }
 
     private fun fetchData() {
+        binding.progressBar.visibility = View.VISIBLE
         viewModel.getAllVideos()
     }
 
@@ -62,8 +65,8 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
     }
 
     private fun findVideos(id: String) {
+        binding.progressBar.visibility = View.VISIBLE
         viewModel.getVideos(id)
-
     }
 
 

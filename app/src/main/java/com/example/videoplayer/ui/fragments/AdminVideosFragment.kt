@@ -1,6 +1,7 @@
 package com.example.videoplayer.ui.fragments
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.videoplayer.R
@@ -23,14 +24,19 @@ class AdminVideosFragment : BaseFragment<FragmentAdminVideosBinding>() {
     private fun setOnClickListeners() {
         with(binding) {
             btnSaveVideo.setOnClickListener {
-                if(binding.urlInput.text.toString().isNullOrEmpty()) Toast.makeText(context, "Prazna polja nisu dozvoljena.", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.VISIBLE
+                if(binding.urlInput.text.toString().isEmpty() || !binding.urlInput.text.toString().contains("youtu")) {
+                    Toast.makeText(context, "Neispravan unos.", Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = View.INVISIBLE
+                }
                  else viewModel.saveVideo(binding.urlInput.text.toString(), getCategory()) {
                     if (it) {
                         Toast.makeText(context,"Dodan novi YT video!!", Toast.LENGTH_SHORT).show()
                     }
                     else {
-                        Toast.makeText(context, "Neuspješno", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Neuspješno dodavanje", Toast.LENGTH_SHORT).show()
                     }
+                    binding.progressBar.visibility = View.INVISIBLE
                 }
             }
         }

@@ -1,6 +1,7 @@
 package com.example.videoplayer.ui.fragments
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -24,6 +25,7 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>() {
     private fun setOnClickListeners() {
         with(binding) {
             btnAdminLogin.setOnClickListener {
+                binding.progressBar.visibility = View.VISIBLE
                 if(this.usernameInput.text.toString().isNotEmpty() && this.passwordInput.text.toString().isNotEmpty()) {
                     viewModel.loginUser(this.usernameInput.text.toString(), this.passwordInput.text.toString()) {
                         if (it) {
@@ -31,9 +33,11 @@ class AdminFragment : BaseFragment<FragmentAdminBinding>() {
                         } else {
                             Toast.makeText(requireContext(), "Prijava nije uspijela, pokušajte ponovno", Toast.LENGTH_LONG).show()
                         }
+                        binding.progressBar.visibility = View.INVISIBLE
                     }
                 }
                 else {
+                    binding.progressBar.visibility = View.INVISIBLE
                     Toast.makeText(requireContext(), "Ostavili ste prazna polja, sva polja moraju biti ispunjena", Toast.LENGTH_LONG).show()
                 }
             }
