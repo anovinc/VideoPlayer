@@ -46,7 +46,8 @@
             app:destination="@id/userLoginFragment" />
         <action
             android:id="@+id/action_adminFragment_to_adminVideosFragment"
-            app:destination="@id/adminVideosFragment" />
+            app:destination="@id/adminVideosFragment"
+            app:popUpTo="@id/userLoginFragment" />
     </fragment>
 
     <fragment

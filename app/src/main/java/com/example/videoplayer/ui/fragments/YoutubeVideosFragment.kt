@@ -3,16 +3,17 @@ package com.example.videoplayer.ui.fragments
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.videoplayer.BuildConfig
 import com.example.videoplayer.databinding.FragmentYoutubeVideosBinding
+import com.example.videoplayer.extensions.onClick
 import com.example.videoplayer.ui.adapters.RecyclerViewAdapter
 import com.example.videoplayer.ui.authentification.viewmodels.YoutubeVideosViewModel
 import com.example.videoplayer.ui.base.BaseFragment
-import com.example.videoplayer.utils.YoutubeIdHelper
 import org.koin.android.ext.android.inject
+import com.example.videoplayer.R
+
+
 
 class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), RecyclerViewAdapter.OnVideoThumbnailClick {
-
     private val viewModel : YoutubeVideosViewModel by inject()
     private val recyclerViewAdapter = RecyclerViewAdapter(this)
     private val NUMBER_OF_COLS = 3
@@ -24,6 +25,7 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
         init()
         observeData()
         fetchData()
+        sortVideos()
     }
 
     private fun init() {
@@ -47,4 +49,22 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
         val videoViewDialog = VideoViewDialog()
         videoViewDialog.showYoutubeVideo(requireActivity(), viewLifecycleOwner, id = path)
     }
+
+    private fun sortVideos() {
+        binding.btnCategory.onClick {
+            when(binding.rgSort.checkedRadioButtonId) {
+                R.id.all_videos -> fetchData()
+                R.id.music -> findVideos("music")
+                R.id.sport -> findVideos("sport")
+                R.id.entertaiment -> findVideos("zabava")
+            }
+        }
+    }
+
+    private fun findVideos(id: String) {
+        viewModel.getVideos(id)
+
+    }
+
+
 }
