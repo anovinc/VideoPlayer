@@ -34,17 +34,18 @@ class FirestoreRepository(private val firestoreDatabase: FirebaseFirestore) {
         emit(videos)
     }
 
-    suspend fun getVideos(id:String, collection: String) = flow {
+    suspend fun getVideos(id: String, collection: String) = flow {
         var videos: ArrayList<YoutubeVideo> = ArrayList()
 
-        firestoreDatabase.collection(collection).whereEqualTo("id",id)
+        firestoreDatabase.collection(collection)
+            .whereEqualTo("id", id)
             .get()
             .addOnSuccessListener {
                 for (item in it.documents) {
-                    val id = YoutubeIdHelper.getYouTubeId(item[BuildConfig.VIDEO_URL] as String)
-                    val thumbnail = YoutubeIdHelper.getImageUrlFromId(id)
+                    val videoId = YoutubeIdHelper.getYouTubeId(item[BuildConfig.VIDEO_URL] as String)
+                    val thumbnail = YoutubeIdHelper.getImageUrlFromId(videoId)
 
-                    videos.add(YoutubeVideo(id, thumbnail))
+                    videos.add(YoutubeVideo(videoId, thumbnail))
                 }
             }
             .addOnFailureListener {

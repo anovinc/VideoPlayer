@@ -25,7 +25,7 @@ class AdminVideosFragment : BaseFragment<FragmentAdminVideosBinding>() {
         with(binding) {
             btnSaveVideo.setOnClickListener {
                 binding.progressBar.visibility = View.VISIBLE
-                if(binding.urlInput.text.toString().isEmpty() || !binding.urlInput.text.toString().contains("youtu")) {
+                if(binding.urlInput.text.toString().isEmpty() || !isYoutubeUrl(binding.urlInput.text.toString())) {
                     Toast.makeText(context, "Neispravan unos.", Toast.LENGTH_SHORT).show()
                     binding.progressBar.visibility = View.INVISIBLE
                 }
@@ -40,6 +40,14 @@ class AdminVideosFragment : BaseFragment<FragmentAdminVideosBinding>() {
                 }
             }
         }
+    }
+
+    private fun isYoutubeUrl(url: String): Boolean {
+        val pattern = "^(http(s)?:\\/\\/)?((w){3}.)?youtu(be|.be)?(\\.com)?\\/.+"
+        if(url.isNotEmpty() && url.matches(pattern.toRegex())) {
+            return true
+        }
+        return false
     }
 
     private fun getCategory(): String {

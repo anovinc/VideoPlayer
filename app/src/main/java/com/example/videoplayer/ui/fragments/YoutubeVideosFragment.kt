@@ -57,7 +57,7 @@ class YoutubeVideosFragment : BaseFragment<FragmentYoutubeVideosBinding>(), Recy
         binding.btnCategory.onClick {
             when(binding.rgSort.checkedRadioButtonId) {
                 R.id.all_videos -> fetchData()
-                R.id.music -> findVideos("music")
+                R.id.music -> findVideos("glazba")
                 R.id.sport -> findVideos("sport")
                 R.id.entertaiment -> findVideos("zabava")
             }

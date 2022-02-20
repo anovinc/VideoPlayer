@@ -2,12 +2,10 @@ package com.example.videoplayer.ui.authentification.viewmodels
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.media.ThumbnailUtils
 import android.provider.MediaStore
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
 import com.example.videoplayer.models.LocalVideo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +19,6 @@ class LocalVideosViewModel : ViewModel() {
             getAllVideos(context)
         }
     }
-    @SuppressLint("Range")
 
     suspend fun getAllVideos(context: Context) {
         withContext(Dispatchers.IO) {
@@ -38,7 +35,8 @@ class LocalVideosViewModel : ViewModel() {
 
             for (i in count - 1 downTo 0) {
                 cursor.moveToPosition(i)
-                val data = cursor.getString(cursor.getColumnIndex(MediaStore.Video.Media.DATA))
+                val colIndex = cursor.getColumnIndex(MediaStore.Video.Media.DATA)
+                val data = cursor.getString(colIndex)
                 val thumbnail = uri.toString()
                 localVideoArrayList.add(LocalVideo(data, thumbnail))
             }
